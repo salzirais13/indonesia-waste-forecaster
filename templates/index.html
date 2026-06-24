@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future TS Prediction</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="static/logo.png" alt="Logo">
+        </div>
+        <h1>Indonesia Waste Prediction</h1>
+    </header>
+
+    <div class="container">
+        <form method="POST">
+            <label for="provinsi">Enter Province:</label>
+            <input type="text" id="provinsi" name="provinsi" required>
+
+            <label for="tahun">Select Year:</label>
+            <input type="number" id="tahun" name="tahun" min="2024" max="3000">
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+        <div class="results">
+            {% if result.error %}
+            <p class="error">{{ result.error }}</p>
+            {% else %}
+            <h2>Waste Prediction for {{ result.provinsi }} in {{ result.tahun }}:</h2>
+            <p>Estimated annual waste for the year: {{ result.last_ts }} ton</p>
+            <p>Percentage of landfill capacity per day: {{ result.persentase }}%</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>Address: Jl. Ranggagading No.8, Tamansari, Bandung, Jawa Barat 40116</p>
+        <p>Follow us: 
+            <a href="https://statistika.unisba.ac.id">Website</a> | 
+            <a href="https://www.instagram.com/statistikaunisba">Instagram</a>
+        </p>
+        <p>&copy; 2024  Program Studi Statistika Universitas Islam Bandung. All rights reserved.</p>
+    </footer>
+</body>
+</html>
